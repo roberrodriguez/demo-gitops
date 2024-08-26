@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sampleapp-prj
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: Namespace
+  destinations:
+  - name: '*'
+    namespace: '*-sampleapp'
+    server: '*'
+  sourceRepos:
+  - '*'
