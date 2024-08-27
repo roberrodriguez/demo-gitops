@@ -1,7 +1,6 @@
 # Demo ArgoCD
 
 ## 1. Creacion cluster kubernetes con Kind (Kubernetes in docker)
-**kind create cluster --config kind-config.yaml**
 ```bash
 ~/demo-gitops git:(main|)❯❯❯ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
@@ -24,7 +23,6 @@ Have a nice day! 👋
 ## 2. Instalación ArgoCD
 
 ### Creamos el namespace
-**kubectl create ns argocd**
 ```bash
 ~/demo-gitops git:(main|)❯❯❯ kubectl create ns argocd
 namespace/argocd created
@@ -32,7 +30,6 @@ namespace/argocd created
 ```
 
 ### Instalamos ArgoCD
-**kubectl -n argocd apply -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.2/manifests/install.yaml**
 ```bash
 ~/demo-gitops git:(main|)❯❯❯ kubectl -n argocd apply -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.2/manifests/install.yaml
 customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io created
@@ -98,7 +95,6 @@ networkpolicy.networking.k8s.io/argocd-server-network-policy created
 ```
 
 ### Parcheamos ArgoCD para que use el proxy de T-Systems
-**kubectl -n argocd patch deployment argocd-repo-server -p '{"spec":{"template":{"spec":{"containers":[{"name":"argocd-repo-server","env":[{"name":"HTTP_PROXY","value":"http://10.49.1.1:8080"},{"name":"HTTPS_PROXY","value":"http://10.49.1.1:8080"},{"name":"NO_PROXY","value":".cluster.local,.svc,10.244.0.0/16,172.18.0.0/16"}]}]}}}}'**
 ```bash
 ~/demo-gitops git:(main|)❯❯❯ kubectl -n argocd patch deployment argocd-repo-server -p '{"spec":{"template":{"spec":{"containers":[{"name":"argocd-repo-server","env":[{"name":"HTTP_PROXY","value":"http://10.49.1.1:8080"},{"name":"HTTPS_PROXY","value":"http://10.49.1.1:8080"},{"name":"NO_PROXY","value":".cluster.local,.svc,10.244.0.0/16,172.18.0.0/16"}]}]}}}}'
 deployment.apps/argocd-repo-server patched
@@ -107,7 +103,6 @@ deployment.apps/argocd-repo-server patched
 
 
 ### Creamos el Servicio, Proyecto y Aplicaciones
-**kubectl -n argocd apply -f argo**
 ```bash
 ~/demo-gitops git:(main|)❯❯❯ kubectl -n argocd apply -f argo
 applicationset.argoproj.io/sampleapp created
@@ -127,7 +122,6 @@ http://localhost:30001
 http://localhost:30000
 
 ### Para obtener el password de admin de ArgoCD
-**kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo**
 ```bash
 ~/demo-gitops git:(main|…1)❯❯❯ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 qUfoHqZYY86v97Q5
