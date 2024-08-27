@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/roberrodriguez/demo-gitops.git 
         targetRevision: HEAD
-        path: sampleapp/{{.cluster}}
+        path: sampleapp/overlays/{{.cluster}}
       destination:
         server: '{{.url}}'
         namespace: '{{.cluster}}-sampleapp'
