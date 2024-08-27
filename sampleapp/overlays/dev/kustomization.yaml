@@ -5,4 +5,10 @@ resources:
 
 patches:
 - path: ./patch-svc.yaml
-- path: ./cm-index.yaml
+
+configMapGenerator:
+- name: cm-index
+  files:
+  - index.html
+  options:
+    disableNameSuffixHash: false
