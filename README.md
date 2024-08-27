@@ -121,14 +121,14 @@ http://localhost:30001
 ### Sample App - PROD
 http://localhost:30000
 
-### Para obtener el password de admin de ArgoCD
+## Para obtener el password de admin de ArgoCD
 ```bash
 ~/demo-gitops git:(main|…1)❯❯❯ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 qUfoHqZYY86v97Q5
 ~/demo-gitops git:(main|…1)❯❯❯
 ```
 
-### Para destruir el cluster 
+## Para destruir el cluster 
 ```bash
 ~/demo-gitops git:(main|…1)❯❯❯ kind delete clusters kind
 Deleted nodes: ["kind-control-plane" "kind-worker"]
