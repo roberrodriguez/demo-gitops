@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  index.html: |
+    <html>
+      <title>Sample APP - PROD</title>
+      <body>
+        <h1 style="color:red">Sample APP - PROD</h1>
+        <p id="datetime"></p>
+
+        <script>
+          var dt = new Date();
+          document.getElementById("datetime").innerHTML = dt.toLocaleString();
+        </script>
+      </body>
+    </html>
+kind: ConfigMap
+metadata:
+  name: cm-index

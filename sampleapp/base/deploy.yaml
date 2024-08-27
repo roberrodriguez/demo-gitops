@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: nginx
   name: nginx
@@ -13,12 +12,17 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: nginx
     spec:
       containers:
       - image: nginx
         name: nginx
-        resources: {}
-status: {}
+        volumeMounts:
+        - name: cm-index
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html
+      volumes:
+      - name: cm-index
+        configMap:
+          name: cm-index
