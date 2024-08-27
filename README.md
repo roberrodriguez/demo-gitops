@@ -2,6 +2,9 @@
 
 ## 1. Creacion cluster kubernetes con Kind (Kubernetes in docker)
 ```bash
+kind create cluster --config kind-config.yaml
+```
+```bash
 ~/demo-gitops git:(main|)❯❯❯ kind create cluster --config kind-config.yaml
 Creating cluster "kind" ...
  ✓ Ensuring node image (kindest/node:v1.31.0) 🖼
