@@ -127,3 +127,11 @@ http://localhost:30000
 qUfoHqZYY86v97Q5
 ~/demo-gitops git:(main|…1)❯❯❯
 ```
+
+### Para destruir el cluster 
+```bash
+~/demo-gitops git:(main|…1)❯❯❯ kind delete clusters kind
+Deleted nodes: ["kind-control-plane" "kind-worker"]
+Deleted clusters: ["kind"]
+~/demo-gitops git:(main|)❯❯❯
+```
